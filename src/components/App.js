@@ -19,6 +19,7 @@ const App = () => {
         <>
             {init ? <AppRouter isLoggedIn={isLoggedIn} /> : 'Initializing...'}
             <footer>&copy; {new Date().getFullYear()} Nwitter</footer>
+            <p>dev test</p>
         </>
     );
 };
