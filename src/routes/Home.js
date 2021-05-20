@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { dbService } from 'fbase';
 
 const Home = () => {
     const [nweet, setNweet] = useState('');
+    const [nweets, setNweets] = useState([]);
+    const getNweets = async () => {
+        const data = await dbService.collection('nweets').get();
+        data.forEach((document) => {
+            console.log(document.data());
+        });
+    };
+    useEffect(() => {
+        getNweets();
+    }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
         await dbService.collection('nweets').add({
